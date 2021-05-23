@@ -1,0 +1,45 @@
+version: '3.2'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - '5434:5432'
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  # metabase:
+  #   container_name: metabase
+  #   image: metabase/metabase
+  #   restart: always
+  #   ports:
+  #     - 3001:3000
+  #   volumes:
+  #     - metabase:/data/metabase
+  #   environment:
+  #     MB_DB_TYPE: postgres
+  #     MB_DB_DBNAME: metabase
+  #     MB_DB_PORT: 5432
+  #     MB_DB_USER: metabase
+  #     MB_DB_PASS: postgres
+  #     MB_DB_HOST: postgres
+  #   depends_on:
+  #     - postgres
+  #   links:
+  #     - postgres
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+  # metabase:
