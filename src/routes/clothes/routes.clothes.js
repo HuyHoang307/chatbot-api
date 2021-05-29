@@ -23,4 +23,22 @@ export default app => {
             next(error)
         }
     })
+
+    route.get('/getProductByMaterial', async (req, res, next) => {
+        try {
+            const data = await clothesService.getProductByMaterial(req.query);
+            return res.json(data);
+        } catch (error) {
+            next(error)
+        }
+    })
+
+    route.get('/getProductByOrigin', async (req, res, next) => {
+        try {
+            const data = await clothesService.getProductByOrigin(req.query);
+            return res.json(data);
+        } catch (error) {
+            next(error)
+        }
+    })
 }
