@@ -10,12 +10,12 @@ export const clothesService = {
         const data = await ClothesModels.searchPriceRange(filer);
         return data;
     },
-    getProductByMaterial: async ({material}) => {
-        const data = await ClothesModels.searchClothes({material});
+    getProductByMaterial: async ({material, color, type, name}) => {
+        const data = await ClothesModels.searchClothes({material, color, type, name});
         return data;
     },
-    getProductByOrigin: async ({origin}) => {
-        const data = await ClothesModels.searchClothes({origin});
+    getProductByOrigin: async ({origin, color, type, name}) => {
+        const data = await ClothesModels.searchClothes({origin, color, type, name});
         return data;
     }
 }
